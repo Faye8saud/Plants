@@ -4,18 +4,17 @@
 //
 //  Created by Fay  on 19/10/2025.
 //
-
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = plantViewModel()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        if viewModel.plants.isEmpty {
+            homeView(viewModel: viewModel)
+        } else {
+            mainMenu(viewModel: viewModel)
         }
-        .padding()
     }
 }
 
